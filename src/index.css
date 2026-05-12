@@ -1,0 +1,23 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, 'Segoe UI', 'Noto Sans Myanmar', sans-serif;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  min-height: 100dvh;
+}
+
+body {
+  background: radial-gradient(circle at 20% 20%, #1e3a5f 0%, transparent 55%),
+    radial-gradient(circle at 80% 80%, #312e81 0%, transparent 50%), #020617;
+  color: #e2e8f0;
+}
