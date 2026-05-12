@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { StudyCardData, VocabItem } from '../types';
-import { ChevronDownIcon, BookmarkIcon, BookmarkSolidIcon, SpeakerIcon, LoadingSpinnerIcon, SparkleIcon, BookOpenIcon, PencilIcon, AcademicCapIcon, CheckCircleSolidIcon, XCircleSolidIcon } from './Icons';
+import { ChevronDownIcon, ChevronLeftIcon, BookmarkIcon, BookmarkSolidIcon, SpeakerIcon, LoadingSpinnerIcon, SparkleIcon, BookOpenIcon, PencilIcon, AcademicCapIcon, CheckCircleSolidIcon, XCircleSolidIcon } from './Icons';
 import { useBookmarks } from '../hooks/useBookmarks';
 import { useLanguage } from '../contexts/LanguageContext';
 import JapaneseText from './JapaneseText';
 import { GoogleGenAI, Modality } from "@google/genai";
 import { vocabularyData } from '../data/vocab';
+
+const EMPTY_VOCAB_LIST: VocabItem[] = [];
 
 // Helper function to prepare text for TTS by removing furigana annotations.
 const stripHtml = (html: string): string => {
@@ -81,15 +83,29 @@ const Card: React.FC<CardProps> = ({
   const [showWaitMessage, setShowWaitMessage] = useState(false);
 
   const [activeTab, setActiveTab] = useState<'explanation' | 'vocab'>('explanation');
-  const vocabData = vocabularyData[data.id] || [];
-
+  const [vocabFlashIdx, setVocabFlashIdx] = useState(0);
+  const [vocabFlip, setVocabFlip] = useState(false);
+  const vocabData = vocabularyData[data.id] ?? EMPTY_VOCAB_LIST;
 
   useEffect(() => {
     setAiExplanation(null);
     setIsAiLoading(false);
     setAiError(null);
-    setActiveTab('explanation');
   }, [data.id]);
+
+  useEffect(() => {
+    setVocabFlashIdx(0);
+    setVocabFlip(false);
+  }, [data.id]);
+
+  useEffect(() => {
+    setActiveTab(language === 'jp-only' ? 'vocab' : 'explanation');
+  }, [language, data.id]);
+
+  useEffect(() => {
+    if (vocabData.length === 0) return;
+    setVocabFlashIdx((prev) => Math.min(prev, vocabData.length - 1));
+  }, [data.id, vocabData.length]);
 
   useEffect(() => {
     let timer: number;
@@ -243,6 +259,79 @@ const Card: React.FC<CardProps> = ({
     </button>
   );
 
+  const renderVocabularyFlashcards = () => {
+    if (vocabData.length === 0) {
+      return <p className="py-6 text-center text-slate-500">ဤမေးခွန်းအတွက် ဝေါဟာရ မရှိပါ။</p>;
+    }
+
+    const item = vocabData[vocabFlashIdx];
+    const vocabAudioId = `${data.id}-vocab-${vocabFlashIdx}`;
+
+    return (
+      <div className="space-y-4">
+        <button
+          type="button"
+          onClick={() => setVocabFlip((f) => !f)}
+          className="mk-touch-btn flex min-h-[12rem] w-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-white/75 via-white/45 to-slate-100/45 px-5 py-6 text-center shadow-mk-float ring-1 ring-white/65 transition active:scale-[0.993]"
+          aria-live="polite"
+        >
+          {!vocabFlip ? (
+            <>
+              <span className="text-xs font-semibold uppercase tracking-wider text-indigo-500">日本語</span>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <p className="font-mono text-xl font-semibold leading-relaxed text-slate-800 sm:text-2xl">
+                  <JapaneseText text={item.jp} onKanjiClick={onKanjiClick} />
+                </p>
+                <AudioButton text={item.jp} id={vocabAudioId} />
+              </div>
+            </>
+          ) : (
+            <>
+              <span className="rounded-full bg-slate-200/80 px-3 py-1 text-xs font-medium text-slate-600">{item.type}</span>
+              <p className="max-w-xl text-xl font-semibold leading-snug text-slate-800 sm:text-2xl">{item.my}</p>
+              <p className="font-mono text-sm leading-relaxed text-slate-500">
+                <JapaneseText text={item.jp} onKanjiClick={onKanjiClick} />
+              </p>
+            </>
+          )}
+        </button>
+
+        <p className="text-center text-xs text-slate-500">ကဒ်ကို တို့၍ မျက်နှာပြန်ပြောင်းပြီး ဂျပန်ပြည်မနဲ့ မြန်မာကို လေ့လာပါ</p>
+
+        <div className="flex items-center gap-4">
+          <button
+            type="button"
+            onClick={() => {
+              setVocabFlip(false);
+              setVocabFlashIdx((i) => Math.max(0, i - 1));
+            }}
+            disabled={vocabFlashIdx === 0}
+            className="mk-touch-btn flex h-12 min-w-[3rem] flex-1 items-center justify-center rounded-2xl bg-neumorphic-bg text-sm font-semibold text-slate-700 shadow-neumorphic-outset transition disabled:opacity-35"
+          >
+            <ChevronLeftIcon className="mr-1 h-5 w-5" /> Prev
+          </button>
+          <span className="shrink-0 text-sm font-bold tabular-nums text-slate-700">
+            {vocabFlashIdx + 1} / {vocabData.length}
+          </span>
+          <button
+            type="button"
+            onClick={() => {
+              setVocabFlip(false);
+              setVocabFlashIdx((i) => Math.min(vocabData.length - 1, i + 1));
+            }}
+            disabled={vocabFlashIdx >= vocabData.length - 1}
+            className="mk-touch-btn flex h-12 min-w-[3rem] flex-1 items-center justify-center rounded-2xl bg-neumorphic-bg text-sm font-semibold text-slate-700 shadow-neumorphic-outset transition disabled:opacity-35"
+          >
+            Next{' '}
+            <span className="-scale-x-100 inline-flex">
+              <ChevronLeftIcon className="ml-1 h-5 w-5" />
+            </span>
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="rounded-3xl bg-neumorphic-bg shadow-mk-float ring-1 ring-white/50">
       <div className="p-5 sm:p-6 md:p-7">
@@ -350,7 +439,17 @@ const Card: React.FC<CardProps> = ({
             )
           })}
         </div>
-        
+
+        {language === 'jp-only' && (
+          <div className="mt-6 rounded-2xl bg-neumorphic-bg/90 p-4 pt-6 shadow-neumorphic-inset ring-1 ring-white/40 sm:p-5">
+            <div className="mb-4 flex items-center gap-2 text-slate-800">
+              <AcademicCapIcon className="h-6 w-6 shrink-0 text-indigo-600" />
+              <span className="text-lg font-bold">ဝေါဟာရ ဖလပ်ကဒ်</span>
+            </div>
+            {renderVocabularyFlashcards()}
+          </div>
+        )}
+
         {language !== 'jp-only' && (
           <div className="pt-6 mt-6">
             <div className="mb-4 flex p-1.5 shadow-neumorphic-inset rounded-xl bg-neumorphic-bg/80 ring-1 ring-white/35">
@@ -363,7 +462,10 @@ const Card: React.FC<CardProps> = ({
               </button>
               <button
                 type="button"
-                onClick={() => setActiveTab('vocab')}
+                onClick={() => {
+                  setActiveTab('vocab');
+                  setVocabFlip(false);
+                }}
                 className={`mk-touch-btn flex min-h-[48px] flex-1 items-center justify-center rounded-lg px-4 py-3 text-sm font-semibold transition-all ${activeTab === 'vocab' ? 'bg-white/70 text-slate-800 shadow-mk-float' : 'text-slate-500'}`}
               >
                 <AcademicCapIcon className="w-5 h-5 mr-2" /> ဝေါဟာရ
@@ -416,34 +518,7 @@ const Card: React.FC<CardProps> = ({
                 </>
               )}
               
-              {activeTab === 'vocab' && (
-                  <div>
-                  {vocabData && vocabData.length > 0 ? (
-                      <div className="overflow-x-auto">
-                      <table className="w-full text-sm text-left text-slate-600">
-                          <thead className="text-xs text-slate-500 uppercase">
-                          <tr>
-                              <th scope="col" className="px-4 py-2">Japanese</th>
-                              <th scope="col" className="px-4 py-2">Burmese</th>
-                              <th scope="col" className="px-4 py-2">Type</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          {vocabData.map((item, index) => (
-                              <tr key={index} className="border-t border-neumorphic-shadow-dark/20">
-                              <td className="px-4 py-2 font-mono"><JapaneseText text={item.jp} onKanjiClick={onKanjiClick} /></td>
-                              <td className="px-4 py-2">{item.my}</td>
-                              <td className="px-4 py-2 text-slate-500">{item.type}</td>
-                              </tr>
-                          ))}
-                          </tbody>
-                      </table>
-                      </div>
-                  ) : (
-                      <p className="text-center text-slate-500 py-4">ဤမေးခွန်းအတွက် ဝေါဟာရ မရှိပါ။</p>
-                  )}
-                  </div>
-              )}
+              {activeTab === 'vocab' && renderVocabularyFlashcards()}
             </div>
           </div>
         )}
