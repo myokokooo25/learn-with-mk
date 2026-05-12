@@ -19,7 +19,7 @@ interface HistoryEntry {
 }
 
 const Dashboard: React.FC = () => {
-  const { logout } = useAuth();
+  const { logout, skipAccessGate } = useAuth();
   const { language, toggleLanguage } = useLanguage();
   const { bookmarkedIds } = useBookmarks();
   const [showOnlyBookmarked, setShowOnlyBookmarked] = useState(false);
@@ -421,14 +421,16 @@ const Dashboard: React.FC = () => {
               >
                 <GlobeIcon className="h-5 w-5" />
               </button>
-              <button
-                type="button"
-                onClick={logout}
-                className="mk-touch-btn flex h-11 w-11 items-center justify-center rounded-xl text-slate-600 shadow-neumorphic-outset ring-1 ring-white/30 active:shadow-neumorphic-inset hover:text-red-600"
-                title="Logout"
-              >
-                <LogoutIcon className="h-5 w-5" />
-              </button>
+              {!skipAccessGate && (
+                <button
+                  type="button"
+                  onClick={logout}
+                  className="mk-touch-btn flex h-11 w-11 items-center justify-center rounded-xl text-slate-600 shadow-neumorphic-outset ring-1 ring-white/30 active:shadow-neumorphic-inset hover:text-red-600"
+                  title="Logout"
+                >
+                  <LogoutIcon className="h-5 w-5" />
+                </button>
+              )}
             </div>
           </div>
           <div className="relative w-full lg:order-2 lg:min-w-0 lg:flex-1 lg:max-w-2xl">

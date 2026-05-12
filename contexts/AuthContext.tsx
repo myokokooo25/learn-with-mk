@@ -2,6 +2,11 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import { User } from '../types';
 import { VALID_ACCESS_KEYS, TRIAL_ACCESS_KEYS } from '../data/keys';
 
+/** Redeem code gate – set to `false` later to restore Login + access keys */
+export const SKIP_ACCESS_GATE = true;
+
+const BYPASS_USER: User = { accessKey: '__OPEN_ACCESS__' };
+
 // --- Helper Functions & Types ---
 
 // This function sends login details to a backend endpoint.
@@ -41,6 +46,7 @@ interface AuthContextType {
   error: string | null;
   login: (accessKey: string) => Promise<boolean>;
   logout: () => void;
+  skipAccessGate: boolean;
 }
 
 const getDeviceId = (): string => {
@@ -75,7 +81,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
- useEffect(() => {
+  useEffect(() => {
+    if (SKIP_ACCESS_GATE) {
+      setUser(BYPASS_USER);
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     try {
       const storedUserJSON = localStorage.getItem(LOGGED_IN_USER_KEY);
@@ -88,7 +100,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         // Check if this device is still authorized for permanent keys
         if (VALID_ACCESS_KEYS.includes(storedUser.accessKey) && !keyDevices.includes(deviceId)) {
           // This device was removed by another login, so log it out.
-          logout(); 
+          logout();
         } else {
           setUser(storedUser);
         }
@@ -101,6 +113,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   }, []);
 
   const login = async (accessKey: string): Promise<boolean> => {
+    if (SKIP_ACCESS_GATE) {
+      setUser(BYPASS_USER);
+      return true;
+    }
+
     setError(null);
     setLoading(true);
     
@@ -188,13 +205,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   const logout = () => {
+    if (SKIP_ACCESS_GATE) return;
     // Do not remove device from list on logout to enforce device limit policy
     localStorage.removeItem(LOGGED_IN_USER_KEY);
     setUser(null);
     // Do not remove deviceId from session storage on manual logout
   };
 
-  const value = { user, loading, error, login, logout };
+  const value = { user, loading, error, login, logout, skipAccessGate: SKIP_ACCESS_GATE };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
