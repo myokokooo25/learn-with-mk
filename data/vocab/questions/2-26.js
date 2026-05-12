@@ -1,0 +1,22 @@
+export default [
+  { jp: '溶接 (ようせつ)', my: 'ဂဟေဆက်ခြင်း', type: 'Noun' },
+  { jp: '鉄骨 (てっこつ)', my: 'သံမဏိ', type: 'Noun' },
+  { jp: '製作工場 (せいさくこうじょう)', my: 'ထုတ်လုပ်ရေးစက်ရုံ', type: 'Noun' },
+  { jp: '性能評価基準 (せいのうひょうかきじゅん)', my: 'စွမ်းဆောင်ရည် အကဲဖြတ်စံနှုန်း', type: 'Noun' },
+  { jp: '定める (さだめる)', my: 'သတ်မှတ်သည်', type: 'Verb' },
+  { jp: '鋼材 (こうざい)', my: 'သံမဏိပစ္စည်း', type: 'Noun' },
+  { jp: '種類 (しゅるい)', my: 'အမျိုးအစား', type: 'Noun' },
+  { jp: '溶接材料 (ようせつざいりょう)', my: 'ဂဟေဆက် ပစ္စည်းများ', type: 'Noun' },
+  { jp: '溶接入熱 (ようせつにゅうねつ)', my: 'Heat Input', type: 'Noun' },
+  { jp: 'パス間温度 (パスかんおんど)', my: 'Pass Temperature', type: 'Noun' },
+  { jp: '次 (つぎ)', my: 'နောက်တစ်ခု', type: 'Noun' },
+  { jp: '組合せ (くみあわせ)', my: 'ပေါင်းစပ်မှု', type: 'Noun' },
+  { jp: '内 (ない)', my: 'အတွင်း', type: 'Noun' },
+  { jp: '記述 (きじゅつ)', my: 'ဖော်ပြချက်', type: 'Noun' },
+  { jp: '最も (もっとも)', my: 'အ...ဆုံး', type: 'Adverb' },
+  { jp: '不適当 (ふてきとう)', my: 'မသင့်လျော်သော', type: 'Adjective' },
+  { jp: '級鋼 (きゅうこう)', my: 'Grade Steel', type: 'Noun' },
+  { jp: '鋼板 (こうはん)', my: 'Steel Plate', type: 'Noun' },
+  { jp: '以下 (いか)', my: '...နှင့်အောက်', type: 'Grammar' },
+  { jp: '除く (のぞく)', my: '...မှလွဲ၍', type: 'Verb' }
+];

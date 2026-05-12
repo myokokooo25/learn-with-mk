@@ -1,0 +1,21 @@
+export default [
+  { jp: '溶接入熱 (ようせつにゅうねつ)', my: 'Heat Input', type: 'Noun' },
+  { jp: '冷却速度 (れいきゃくそくど)', my: 'Cooling Rate', type: 'Noun' },
+  { jp: '関する (かんする)', my: '...နှင့် ပတ်သက်သော', type: 'Verb' },
+  { jp: '次 (つぎ)', my: 'နောက်တစ်ခု', type: 'Noun' },
+  { jp: '記述 (きじゅつ)', my: 'ဖော်ပြချက်', type: 'Noun' },
+  { jp: '最も (もっとも)', my: 'အ...ဆုံး', type: 'Adverb' },
+  { jp: '不適当 (ふてきとう)', my: 'မသင့်လျော်သော', type: 'Adjective' },
+  { jp: '大きい (おおきい)', my: 'ကြီးသော', type: 'Adjective' },
+  { jp: '遅い (おそい)', my: 'နှေးသော', type: 'Adjective' },
+  { jp: 'パス間温度 (パスかんおんど)', my: 'Pass Temperature', type: 'Noun' },
+  { jp: '高い (たかい)', my: 'မြင့်သော', type: 'Adjective' },
+  { jp: '溶接速度 (ようせつそくど)', my: 'Weld Speed', type: 'Noun' },
+  { jp: '速い (はやい)', my: 'မြန်သော', type: 'Adjective' },
+  { jp: '溶接金属 (ようせつきんぞく)', my: 'Weld Metal', type: 'Noun' },
+  { jp: '強度 (きょうど)', my: 'ခိုင်မာမှု', type: 'Noun' },
+  { jp: '低下 (ていか)', my: 'ကျဆင်းခြင်း', type: 'Noun' },
+  { jp: '母材 (ぼざい)', my: 'Base Material', type: 'Noun' },
+  { jp: '板厚 (いたあつ)', my: 'Plate အထူ', type: 'Noun' },
+  { jp: '厚い (あつい)', my: 'ထူသော', type: 'Adjective' }
+];

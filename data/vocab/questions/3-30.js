@@ -1,0 +1,22 @@
+export default [
+  { jp: '溶接 (ようせつ)', my: 'ဂဟေဆက်ခြင်း', type: 'Noun' },
+  { jp: '入熱 (にゅうねつ)', my: 'Heat input', type: 'Noun' },
+  { jp: '関する (かんする)', my: '...နှင့် ပတ်သက်သော', type: 'Verb' },
+  { jp: '次 (つぎ)', my: 'နောက်တစ်ခု', type: 'Noun' },
+  { jp: '記述 (きじゅつ)', my: 'ဖော်ပြချက်', type: 'Noun' },
+  { jp: '最も (もっとも)', my: 'အ...ဆုံး', type: 'Adverb' },
+  { jp: '適当 (てきとう)', my: 'သင့်လျော်သော', type: 'Adjective' },
+  { jp: '大きい (おおきい)', my: 'ကြီးမားသော', type: 'Adjective' },
+  { jp: '溶接部 (ようせつぶ)', my: 'ဂဟေဆက်နေရာ', type: 'Noun' },
+  { jp: '冷却速度 (れいきゃくそくど)', my: 'Cooling rate', type: 'Noun' },
+  { jp: '速い (はやい)', my: 'မြန်သော', type: 'Adjective' },
+  { jp: '硬化 (こうか)', my: 'မာကျောလွယ်သည်', type: 'Verb' },
+  { jp: '小さい (ちいさい)', my: 'နည်းပါးသော', type: 'Adjective' },
+  { jp: '溶け込み不足 (とけこみふそく)', my: 'Incomplete fusion', type: 'Noun' },
+  { jp: '原因 (げんいん)', my: 'အကြောင်းရင်း', type: 'Noun' },
+  { jp: '溶接速度 (ようせつそくど)', my: 'Welding speed', type: 'Noun' },
+  { jp: '変形 (へんけい)', my: 'Deformation', type: 'Noun' },
+  { jp: '影響 (えいきょう)', my: 'သက်ရောက်မှု', type: 'Noun' },
+  { jp: '厚板 (あついた)', my: 'အထူကြီးသော plate', type: 'Noun' },
+  { jp: '常に (つねに)', my: 'အမြဲတမ်း', type: 'Adverb' }
+];

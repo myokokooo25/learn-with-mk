@@ -1,0 +1,22 @@
+export default [
+  { jp: '溶接技能技術試験 (ようせつぎのうぎじゅつしけん)', my: 'Welding Skill Test', type: 'Noun' },
+  { jp: '資格認証 (しかくにんしょう)', my: 'အရည်အချင်း အသိအမှတ်ပြုခြင်း', type: 'Noun' },
+  { jp: '有する (ゆうする)', my: 'ရှိသည်', type: 'Verb' },
+  { jp: '溶接技能者 (ようせつぎのうしゃ)', my: 'ဂဟေဆော်သူ', type: 'Noun' },
+  { jp: '施工可能範囲 (せこうかのうはんい)', my: 'လုပ်ဆောင်နိုင်သော နယ်ပယ်', type: 'Noun' },
+  { jp: '溶接法 (ようせつほう)', my: 'ဂဟေဆက်နည်း', type: 'Noun' },
+  { jp: '板厚 (いたあつ)', my: 'Plate အထူ', type: 'Noun' },
+  { jp: '溶接姿勢 (ようせつしせい)', my: 'ဂဟေဆက် အနေအထား', type: 'Noun' },
+  { jp: '等 (とう)', my: 'စသည်', type: 'Suffix' },
+  { jp: '最も (もっとも)', my: 'အ...ဆုံး', type: 'Adverb' },
+  { jp: '不適当 (ふてきとう)', my: 'မသင့်လျော်သော', type: 'Adjective' },
+  { jp: '中厚板 (ちゅうあついた)', my: 'အလယ်အလတ်/ထူသော Plate', type: 'Noun' },
+  { jp: '構造 (こうぞう)', my: 'ဖွဲ့စည်းပုံ', type: 'Noun' },
+  { jp: '以上 (いじょう)', my: '...နှင့်အထက်', type: 'Grammar' },
+  { jp: '下 (した)', my: 'အောက်', type: 'Noun' },
+  { jp: '裏当て金 (うらあてがね)', my: 'Backing Metal', type: 'Noun' },
+  { jp: '有り (あり)', my: 'ရှိသည်', type: 'Noun' },
+  { jp: '立向上進姿勢 (たちむきじょうしんしせい)', my: 'Vertical Upward Position', type: 'Noun' },
+  { jp: '横向姿勢 (よこむきしせい)', my: 'Horizontal Position', type: 'Noun' },
+  { jp: '下向姿勢 (したむきしせい)', my: 'Flat Position', type: 'Noun' }
+];

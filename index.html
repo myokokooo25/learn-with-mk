@@ -2,8 +2,11 @@
 <html lang="en" class="light">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>鉄骨製作管理技術者 試験対策アプリ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="theme-color" content="#e4e9f0" />
+    <title>Learn with MK · 鉄骨製作管理技術者</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+Myanmar:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,7 +28,11 @@
             boxShadow: {
               'neumorphic-outset': '8px 8px 16px #a3b1c6, -8px -8px 16px #ffffff',
               'neumorphic-inset': 'inset 8px 8px 16px #a3b1c6, inset -8px -8px 16px #ffffff',
-            }
+              'mk-float': '0 12px 40px -8px rgba(15, 23, 42, 0.12), 0 4px 16px -4px rgba(15, 23, 42, 0.08)',
+            },
+            maxWidth: {
+              'readable': '42rem',
+            },
           },
         },
       }
@@ -65,7 +72,7 @@
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-neumorphic-bg font-sans antialiased text-neumorphic-text">
+  <body class="mk-app-bg font-sans antialiased text-neumorphic-text">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

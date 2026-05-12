@@ -1,0 +1,22 @@
+export default [
+  { jp: '鋼構造建築物 (こうこうぞうけんちくぶつ)', my: 'သံမဏိ ဖွဲ့စည်းပုံ အဆောက်အဦ', type: 'Noun' },
+  { jp: '使用 (しよう)', my: 'အသုံးပြုခြင်း', type: 'Noun' },
+  { jp: '次 (つぎ)', my: 'နောက်တစ်ခု', type: 'Noun' },
+  { jp: '溶接法 (ようせつほう)', my: 'ဂဟေဆက်နည်း', type: 'Noun' },
+  { jp: '中 (なか)', my: 'အတွင်း', type: 'Noun' },
+  { jp: '供給 (きょうきゅう)', my: 'ထောက်ပံ့မှု', type: 'Noun' },
+  { jp: '支障 (ししょう)', my: 'ပြဿနာ', type: 'Noun' },
+  { jp: '発生 (はっせい)', my: 'ဖြစ်ပွားခြင်း', type: 'Noun' },
+  { jp: '場合 (ばあい)', my: 'အခြေအနေ', type: 'Noun' },
+  { jp: '施工上 (せこうじょう)', my: 'တည်ဆောက်မှုအရ', type: 'Noun' },
+  { jp: '問題 (もんだい)', my: 'ပြဿနာ', type: 'Noun' },
+  { jp: '生じる (しょうじる)', my: 'ဖြစ်ပေါ်သည်', type: 'Verb' },
+  { jp: '以外 (いがい)', my: '...မှလွဲ၍', type: 'Noun' },
+  { jp: '作業環境 (さぎょうかんきょう)', my: 'လုပ်ငန်းပတ်ဝန်းကျင်', type: 'Noun' },
+  { jp: '条件 (じょうけん)', my: 'အခြေအနေ', type: 'Noun' },
+  { jp: '被覆アーク溶接 (ひふくアークようせつ)', my: 'Covered Arc Welding', type: 'Noun' },
+  { jp: 'ガスシールドアーク溶接 (ガスシールドアークようせつ)', my: 'Gas Shielded Arc Welding', type: 'Noun' },
+  { jp: 'サブマージアーク溶接 (サブマージアークようせつ)', my: 'Submerged Arc Welding', type: 'Noun' },
+  { jp: 'エレクトロスラグ溶接 (エレクトロスラグようせつ)', my: 'Electro Slag Welding', type: 'Noun' },
+  { jp: 'セルフシールドアーク溶接 (セルフシールドアークようせつ)', my: 'Self-Shielded Arc Welding', type: 'Noun' }
+];

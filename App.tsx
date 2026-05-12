@@ -9,14 +9,18 @@ const AppContent: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-slate-100 dark:bg-slate-900">
-        <div className="w-16 h-16 border-4 border-t-4 border-gray-200 rounded-full border-t-indigo-600 animate-spin"></div>
+      <div className="flex items-center justify-center min-h-[100dvh] min-h-screen mk-app-bg">
+        <div className="relative h-14 w-14">
+          <div className="absolute inset-0 rounded-full border-[3px] border-slate-300/70" aria-hidden />
+          <div className="absolute inset-0 animate-spin rounded-full border-[3px] border-transparent border-t-indigo-500 border-r-violet-400" />
+          <span className="sr-only">Loading</span>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-[100dvh] min-h-screen">
       {user ? <Dashboard /> : <AuthScreen />}
     </div>
   );
