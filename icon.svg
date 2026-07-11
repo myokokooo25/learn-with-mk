@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Learn with MK">
+  <rect width="128" height="128" rx="28" fill="#1a1510"/>
+  <rect x="10" y="10" width="108" height="108" rx="22" fill="#f4f1ea"/>
+  <text x="64" y="78" text-anchor="middle" font-family="Georgia, 'Noto Serif JP', serif" font-size="52" font-weight="700" fill="#b8860b">‡</text>
+  <circle cx="98" cy="30" r="14" fill="#4fa676"/>
+  <text x="98" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">MK</text>
+</svg>

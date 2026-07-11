@@ -1,0 +1,19 @@
+{
+  "name": "Learn with MK — 文法",
+  "short_name": "Learn with MK",
+  "description": "JLPT N5–N1 Japanese grammar with Myanmar explanations, quizzes, and SRS review.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f1ea",
+  "theme_color": "#b8860b",
+  "lang": "my",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
